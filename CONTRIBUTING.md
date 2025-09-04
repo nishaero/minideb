@@ -43,6 +43,4 @@ Notice the `Author` and `Signed-off-by` lines match. If they don't your PR will 
 
 ### PR Approval and Release Process
 
-1. Changes are manually reviewed by Bitnami team members usually within a business day.
-2. Once the changes are accepted, the PR is tested (if needed) into the Bitnami CI pipeline.
 3. The PR is merged by the reviewer(s) in the GitHub `master` branch.

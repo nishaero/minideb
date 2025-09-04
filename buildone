@@ -33,7 +33,7 @@ set -e
 set -u
 set -o pipefail
 
-BASENAME=bitnami/minideb
+BASENAME=nishaero/minideb
 
 mkdir -p build
 
