@@ -13,7 +13,7 @@ if [ -n "${DOCKER_PASSWORD:-}" ]; then
     docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 fi
 
-
+push() {
     local dist="$1"
     docker push "${BASENAME}:${dist}"
 }
@@ -21,4 +21,3 @@ fi
 for DIST in $DISTS; do
     push "$DIST"
 done
-for DIST in $DISTS; do
