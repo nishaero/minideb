@@ -4,10 +4,11 @@ set -e
 set -u
 set -o pipefail
 
-DISTS=${DISTS:-"bullseye
-bookworm
+BASENAME=nishaero/minideb
+DISTS=${DISTS:-"trixie
 latest
 "}
+DOCKER_REGISTRY=${DOCKER_REGISTRY:-"ghcr.io"}
 
 BASENAME=bitnami/minideb
 DOCKER_REGISTRY=${DOCKER_REGISTRY:-"docker.io"}

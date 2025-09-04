@@ -7,8 +7,8 @@ set -o pipefail
 DIST=${1:?Specify the distrubution name}
 PLATFORM=${2:-amd64}
 
-BASENAME=bitnami/minideb
-DOCKER_REGISTRY=${DOCKER_REGISTRY:-"docker.io"}
+BASENAME=nishaero/minideb
+DOCKER_REGISTRY=${DOCKER_REGISTRY:-"ghcr.io"}
 
 if [ -n "${DOCKER_PASSWORD:-}" ]; then
     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin "${DOCKER_REGISTRY}"
