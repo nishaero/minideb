@@ -17,22 +17,23 @@ env:
 jobs:
   # This workflow contains a single job called "build"
   shellcheck:
-    # The type of runner that the job will run on
     runs-on: ubuntu-24.04
+    container:
+      image: debian:trixie
     name: Shellcheck
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
       - name: Install Dependencies
         run: |
-          sudo apt-get -qq update
-          sudo apt-get install -y shellcheck
+          apt-get -qq update
+          apt-get install -y shellcheck
       - name: Verify scripts with shellcheck
         run: |
           bash shellcheck
   build_multiarch:
     runs-on: ubuntu-24.04
+    container:
+      image: debian:trixie
     needs: [ shellcheck ]
     strategy:
       matrix:
