@@ -1,8 +1,5 @@
 #!/bin/bash
 
-    push "$DIST"
-#!/bin/bash
-
 set -e
 set -u
 set -o pipefail
@@ -16,7 +13,7 @@ if [ -n "${DOCKER_PASSWORD:-}" ]; then
     docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 fi
 
-for DIST in $DISTS; do
+
     local dist="$1"
     docker push "${BASENAME}:${dist}"
 }
@@ -24,7 +21,4 @@ for DIST in $DISTS; do
 for DIST in $DISTS; do
     push "$DIST"
 done
-    # Use '.RepoDigests 0' for getting Dockerhub repo digest as it was the first pushed
-    DIST_REPO_DIGEST=$(docker image inspect --format '{{index .RepoDigests 0}}' "${BASENAME}:${DIST}")
-    update_minideb_derived "https://github.com/bitnami/minideb-runtimes" "$DIST" "$DIST_REPO_DIGEST"
-done
+for DIST in $DISTS; do
