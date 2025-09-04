@@ -16,35 +16,9 @@ case $ARCH in
 esac
 
 work_out_debs () {
-    # adduser in case users want to add a user to run as non-root
-    # base-files as it has many important files
-    # base-passwd to get user account info
-    # bash because users will often shell in
-    # bsdutils because it has some commands used in postinst
-    # coreutils for many very common utilities
-    # dash for a shell for scripts
-    # debian-archive-keyring to verify apt packages
-    # diffutils for diff as required for installing the system
-    # dpkg for dpkg
-    # findutils for find as required for installing the system
-    # grep as it is a very common debugging tool
-    # gzip as decompressing zip is super common
-    # hostname ?
-    # libc-bin for ldconfig
-    # login as su maybe used if run as non root (?)
-    # lsb-base ?
-    # mawk as it is used by dpkg
-    # ncurses-base for terminfo files as docker sets TERM=xterm
-    # ncurses-bin for tput
-    # passwd for su
-    # perl-base for debconf
-    # procps for ps
-    # sed for scripts
-    # sysvinit-utils for pidof
-    # tar for extracting archives
-    # util-linux for many utilities
-    # zlib1g for gzip
-    required="adduser base-files base-passwd bash bsdutils coreutils dash debian-archive-keyring diffutils dpkg findutils grep gzip hostname libc-bin login lsb-base mawk ncurses-base ncurses-bin passwd perl-base procps sed sysvinit-utils tar util-linux zlib1g"
+    # ...existing comments...
+    # Explicitly add dpkg and dpkg-deb for debootstrap compatibility
+    required="adduser base-files base-passwd bash bsdutils coreutils dash debian-archive-keyring diffutils dpkg dpkg-deb findutils grep gzip hostname libc-bin login lsb-base mawk ncurses-base ncurses-bin passwd perl-base procps sed sysvinit-utils tar util-linux zlib1g"
     echo $required
 }
 
