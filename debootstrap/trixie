@@ -16,9 +16,9 @@ case $ARCH in
 esac
 
 work_out_debs () {
-    # ...existing comments...
-    # Explicitly add dpkg and dpkg-deb for debootstrap compatibility
-    required="adduser base-files base-passwd bash bsdutils coreutils dash debian-archive-keyring diffutils dpkg dpkg-deb findutils grep gzip hostname libc-bin login lsb-base mawk ncurses-base ncurses-bin passwd perl-base procps sed sysvinit-utils tar util-linux zlib1g"
-    echo $required
+	# ...existing comments...
+	# dpkg-deb is provided by dpkg, so only dpkg is needed
+	required="adduser base-files base-passwd bash bsdutils coreutils dash debian-archive-keyring diffutils dpkg findutils grep gzip hostname libc-bin login lsb-base mawk ncurses-base ncurses-bin passwd perl-base procps sed sysvinit-utils tar util-linux zlib1g"
+	echo $required
 }
 
