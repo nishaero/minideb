@@ -2,8 +2,12 @@ name: CI
 
 # Controls when the action will run.
 on:
-  # Triggers the workflow on pull request events
+  push:
+    branches:
+      - master
   pull_request:
+    branches:
+      - master
 # Remove all permissions by default
 permissions: {}
 env:
