@@ -36,8 +36,8 @@ jobs:
     needs: [ shellcheck ]
     strategy:
       matrix:
-        dist: [bullseye, bookworm, trixie]
-        arch: [amd64, arm64]
+        dist: [trixie]
+        arch: [amd64]
     name: Build ${{ matrix.dist }} on ${{ matrix.arch }}
     steps:
       - name: Check out repository

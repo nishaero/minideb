@@ -1,3 +1,0 @@
-    if: ${{ github.repository_owner == 'nishaero' }}
-    uses: nishaero/support/.github/workflows/comment-created.yml@main
-    secrets: inherit
