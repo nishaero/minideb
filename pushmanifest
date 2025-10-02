@@ -1,19 +1,14 @@
 #!/bin/bash
-
 set -e
 set -u
 set -o pipefail
 
 BASENAME=nishaero/minideb
-DISTS=${DISTS:-"trixie
-latest
-"}
+DISTS=${DISTS:-"trixie latest"}
 DOCKER_REGISTRY=${DOCKER_REGISTRY:-"ghcr.io"}
-
-BASENAME=bitnami/minideb
-DOCKER_REGISTRY=${DOCKER_REGISTRY:-"docker.io"}
 PLATFORMS=${PLATFORMS:-amd64 arm64}
 DRY_RUN=${DRY_RUN:-}
+
 read -r -a ARCHS <<<"$PLATFORMS"
 
 run_docker() {
@@ -57,7 +52,6 @@ push_manifest() {
 }
 
 tags=()
-
 for DIST in $DISTS; do
     tags+=("$DIST")
 done
