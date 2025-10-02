@@ -18,7 +18,3 @@ apt-get install -y \
   ca-certificates \
   curl \
   gpg
-
-# Download and add Debian Trixie signing keys directly to the keyring
-curl -fsSL https://ftp-master.debian.org/keys/archive-key-13.asc | gpg --no-default-keyring --keyring /usr/share/keyrings/debian-archive-keyring.gpg --import
-curl -fsSL https://ftp-master.debian.org/keys/archive-key-13-security.asc | gpg --no-default-keyring --keyring /usr/share/keyrings/debian-archive-keyring.gpg --import
