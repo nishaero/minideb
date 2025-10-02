@@ -19,18 +19,8 @@ apt-get install -y \
   curl \
   gpg
 
-# Fetch and import the latest Debian archive keyring for Trixie support
-# Create a temporary directory for key processing
-mkdir -p /tmp/debian-keys
-
-# Download Trixie signing keys
-curl -fsSL https://ftp-master.debian.org/keys/archive-key-13.asc > /tmp/debian-keys/archive-key-13.asc
-curl -fsSL https://ftp-master.debian.org/keys/archive-key-13-security.asc > /tmp/debian-keys/archive-key-13-security.asc
-
-# Export existing keyring to ASCII, import new keys, then convert back to binary
-gpg --no-default-keyring --keyring /usr/share/keyrings/debian-archive-keyring.gpg --export-options export-minimal --export > /tmp/debian-keys/existing.asc
-cat /tmp/debian-keys/archive-key-13.asc /tmp/debian-keys/archive-key-13-security.asc /tmp/debian-keys/existing.asc | gpg --no-default-keyring --keyring /tmp/debian-keys/combined.gpg --import
-gpg --no-default-keyring --keyring /tmp/debian-keys/combined.gpg --export-options export-minimal --export | gpg --dearmor > /usr/share/keyrings/debian-archive-keyring.gpg
-
-# Cleanup
-rm -rf /tmp/debian-keys
+# Download and install the latest debian-archive-keyring package from Debian unstable
+# This includes the Trixie signing keys
+curl -fsSL http://deb.debian.org/debian/pool/main/d/debian-archive-keyring/debian-archive-keyring_2023.4_all.deb -o /tmp/debian-keyring.deb
+sudo dpkg -i /tmp/debian-keyring.deb
+rm /tmp/debian-keyring.deb
