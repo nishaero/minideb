@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 set -u
 set -o pipefail
@@ -20,3 +19,9 @@ apt-get install -y \
   curl \
   gpg
 
+# Fetch the latest Debian archive keyring for Trixie support
+curl -fsSL https://ftp-master.debian.org/keys/archive-key-13.asc | gpg --dearmor -o /usr/share/keyrings/debian-archive-keyring-trixie.gpg
+curl -fsSL https://ftp-master.debian.org/keys/archive-key-13-security.asc | gpg --dearmor >> /usr/share/keyrings/debian-archive-keyring-trixie.gpg
+
+# Merge with existing keyring
+cat /usr/share/keyrings/debian-archive-keyring-trixie.gpg >> /usr/share/keyrings/debian-archive-keyring.gpg
